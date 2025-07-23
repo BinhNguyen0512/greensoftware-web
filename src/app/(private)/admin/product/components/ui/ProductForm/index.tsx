@@ -14,7 +14,7 @@ interface Props {
   renderButton: ReactNode;
 }
 
-export const CreateProductForm = (props: Props) => {
+export const ProductForm = (props: Props) => {
   const { control, errors, handleSubmit, onSubmit, renderButton } = props;
 
   return (

@@ -32,5 +32,9 @@ export const useCreateProduct = () => {
     }
   };
 
-  return { handleSubmit, control, errors, onSubmit, reset, isLoading };
+  const handleReset = () => {
+    reset();
+  };
+
+  return { handleSubmit, control, errors, onSubmit, handleReset, isLoading };
 };
