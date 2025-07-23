@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@layer base {
+  h1 {
+    @apply text-xl font-bold lg:text-4xl;
+  }
+}
+
+@theme {
+  /* Font Size */
+  --text-sm: 12px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+  --text-4xl: 32px;
+  --text-5xl: 48px;
+  /* ----- */
+
+  /* Breakpoint */
+  --breakpoint-xs: 425px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1536px;
+  /* ---- */
+
+  /* Color */
+  --color-black: #1c252e;
+  --color-gray-divider: #919eab33;
+
+  --color-brand-50: #e6f1ff;
+  --color-brand-100: #cde4fe;
+  --color-brand-500: #0373f3;
+  --color-brand-600: #025fca;
+  --color-brand-700: #024897;
+  --color-brand-800: #013065;
+
+  --color-gray-200: #f4f6f8;
+
+  --color-yellow-primary: #faca4a;
+
+  --color-secondary: #637381;
+  --color-secondary-50: #1c252e;
+  --color-secondary-200: #ceccca;
+
+  --color-disabled: #919eab;
+
+  --color-error-darker: #7a0916;
+  --color-error-dark: #b71d18;
+  --color-error-main: #ff5630;
+
+  --color-warning-light: #ffd666;
+  --color-warning-main: #ffab00;
+
+  --color-red-60: #ff424f;
+
+  /* animation */
+
+  --animate-placeholder-slide: placeholderSlide 2.5s ease-out forwards;
+
+  @keyframes placeholderSlide {
+    0% {
+      transform: translateX(0);
+      opacity: "0";
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: "1";
+    }
+  }
+}
