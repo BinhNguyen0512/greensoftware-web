@@ -1,20 +1,18 @@
 "use client";
 
-import { WrapperPage } from "@/components/ui/WrapperPage";
-
 import { AdminFormResetButton } from "../components/form/button/AdminFormResetButton";
 import { AdminFormSubmitButton } from "../components/form/button/AdminFormSubmitButton";
 import { CreateProductForm } from "../components/ui/ProductForm";
+import { ProductFormLayout } from "../components/ui/ProductFormLayout";
 import { useCreateProduct } from "./hooks/useCreateProduct";
 
 const CreateProductPage = () => {
   const { control, errors, handleSubmit, onSubmit, reset, isLoading } =
     useCreateProduct();
   return (
-    <main>
-      <WrapperPage>
-        <h1 className="pb-12">Create Product Page</h1>
-
+    <ProductFormLayout
+      title="Create Product Page"
+      renderProductForm={
         <CreateProductForm
           control={control}
           errors={errors}
@@ -32,8 +30,8 @@ const CreateProductPage = () => {
             </div>
           }
         />
-      </WrapperPage>
-    </main>
+      }
+    />
   );
 };
 
