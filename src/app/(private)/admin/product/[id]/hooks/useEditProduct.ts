@@ -3,13 +3,17 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
+import {
+  handleAxiosFormError,
+  handleAxiosMessageError,
+} from "@/helpers/handleAxiosError";
 import { productServices } from "@/services/product";
 import { CreateProductDTO } from "@/types/product/dto";
 import { ProductType } from "@/types/product/response";
 
 import { validationSchema } from "../../validationSchema";
 
-export const initialProductDetail = {
+const initialProductDetail = {
   title: "",
   alias: "",
   price: 0,
@@ -34,6 +38,7 @@ export const useEditProduct = () => {
     control,
     reset,
     formState: { errors },
+    setError,
   } = useForm<CreateProductDTO>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -44,11 +49,11 @@ export const useEditProduct = () => {
       try {
         const response = await productServices.getProductDetailById(productId);
 
-        const productDetail: ProductType = response.data;
+        const productDetail = response.data;
 
         handleProductData(productDetail);
       } catch (error) {
-        console.log(error);
+        handleAxiosMessageError(error);
       } finally {
         setIsLoading(false);
       }
@@ -67,7 +72,7 @@ export const useEditProduct = () => {
 
       handleProductData(updateProductData);
     } catch (error) {
-      console.log(error);
+      handleAxiosFormError(error, setError);
     } finally {
       setIsLoadingUpdate(false);
     }

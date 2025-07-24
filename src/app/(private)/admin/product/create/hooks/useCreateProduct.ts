@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { handleAxiosFormError } from "@/helpers/handleAxiosError";
 import { productServices } from "@/services/product";
 import { CreateProductDTO } from "@/types/product/dto";
 
@@ -13,6 +14,7 @@ export const useCreateProduct = () => {
     control,
     reset,
     formState: { errors },
+    setError,
   } = useForm<CreateProductDTO>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -26,7 +28,7 @@ export const useCreateProduct = () => {
       await productServices.createProduct(data);
       reset();
     } catch (error) {
-      console.log(error);
+      handleAxiosFormError(error, setError);
     } finally {
       setIsLoading(false);
     }

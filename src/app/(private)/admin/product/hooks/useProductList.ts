@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { handleFilter } from "@/helpers/filter";
+import { handleAxiosMessageError } from "@/helpers/handleAxiosError";
 import { productServices } from "@/services/product";
 import { ProductType } from "@/types/product/response";
 
@@ -16,11 +17,11 @@ export const useProductList = () => {
       try {
         const response = await productServices.getAllProduct();
 
-        const productList: ProductType[] = response.data;
+        const productList = response.data;
 
         setProductList(productList);
       } catch (error) {
-        console.log(error);
+        handleAxiosMessageError(error);
       } finally {
         setIsLoading(false);
       }
@@ -42,7 +43,7 @@ export const useProductList = () => {
       setIsLoadingDelete(true);
       const response = await productServices.deleteProduct(item.id);
 
-      const productDelete: ProductType = response.data;
+      const productDelete = response.data;
 
       const updateProductList = handleFilter(productList, productDelete.id);
 

@@ -6,7 +6,7 @@ import { CreateProductDTO } from "@/types/product/dto";
 import { AdminFormInput } from "../../form/input/AdminFormInput";
 
 interface Props {
-  control: Control<CreateProductDTO, any>;
+  control: Control<CreateProductDTO>;
   // eslint-disable-next-line no-unused-vars
   onSubmit: (data: CreateProductDTO) => Promise<void>;
   handleSubmit: UseFormHandleSubmit<CreateProductDTO, CreateProductDTO>;
@@ -26,6 +26,7 @@ export const ProductForm = (props: Props) => {
           errors={errors.title?.message}
           label="Title"
           placeholder="Enter title"
+          defaultValue={""}
         />
       </section>
 
@@ -36,6 +37,7 @@ export const ProductForm = (props: Props) => {
           errors={errors.alias?.message}
           label="Alias"
           placeholder="Enter alias"
+          defaultValue={""}
         />
       </section>
 
@@ -47,6 +49,7 @@ export const ProductForm = (props: Props) => {
           label="Price"
           placeholder="Enter price"
           type="number"
+          defaultValue={0}
         />
       </section>
 
@@ -57,6 +60,7 @@ export const ProductForm = (props: Props) => {
           errors={errors.description?.message}
           label="Description"
           placeholder="Enter description"
+          defaultValue={""}
         />
       </section>
 
@@ -67,6 +71,7 @@ export const ProductForm = (props: Props) => {
           errors={errors.shortDescription?.message}
           label="Short description"
           placeholder="Enter short description"
+          defaultValue={""}
         />
       </section>
 
@@ -78,6 +83,7 @@ export const ProductForm = (props: Props) => {
           label="Stock"
           placeholder="Enter stock"
           type="number"
+          defaultValue={0}
         />
       </section>
 

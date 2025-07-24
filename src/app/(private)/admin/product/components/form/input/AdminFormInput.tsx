@@ -2,29 +2,28 @@
 
 import { Combobox, InputProps, Label } from "@headlessui/react";
 import { useState } from "react";
-import { Control, Controller } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+} from "react-hook-form";
 
 import { AdminTextInput } from "./AdminTextInput";
 
-interface Props extends InputProps {
-  name: string;
-  control: Control<any, any>;
-  defaultValue?: string;
+interface Props<T extends FieldValues> extends InputProps {
+  name: FieldPath<T>;
+  control: Control<T>;
+  defaultValue?: FieldPathValue<T, FieldPath<T>>;
   errors?: string;
   disabled?: boolean;
   label?: string;
 }
 
-export const AdminFormInput = (props: Props) => {
-  const {
-    name,
-    control,
-    defaultValue = "",
-    errors,
-    disabled,
-    label,
-    ...rest
-  } = props;
+export const AdminFormInput = <T extends FieldValues>(props: Props<T>) => {
+  const { name, control, defaultValue, errors, disabled, label, ...rest } =
+    props;
 
   const [value, setValue] = useState<string>("");
 
