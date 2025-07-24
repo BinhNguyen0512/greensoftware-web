@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-import { ButtonCustom } from "@/components/form/ButtonCustom";
+import { AdminButton } from "./AdminButton";
 
 interface Props
   extends DetailedHTMLProps<
@@ -14,19 +14,17 @@ interface Props
 export const AdminFormSubmitButton = (props: Props) => {
   const { title, className, disabled, ...rest } = props;
   return (
-    <ButtonCustom
+    <AdminButton
       className={clsx(
-        "0 rounded-lg py-2",
-        "h-full w-full",
         disabled
-          ? "!cursor-not-allowed bg-gray-300"
-          : "bg-brand-50 hover:!scale-[1.02]",
+          ? "!cursor-not-allowed bg-gray-300 hover:!scale-0"
+          : "bg-brand-500 hover:!scale-[1.02]",
         className,
       )}
       type="submit"
       {...rest}
     >
-      <p>{title}</p>
-    </ButtonCustom>
+      <p className="text-white">{title}</p>
+    </AdminButton>
   );
 };

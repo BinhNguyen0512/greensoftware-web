@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-import { ButtonCustom } from "@/components/form/ButtonCustom";
+import { AdminButton } from "./AdminButton";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props
@@ -13,17 +13,8 @@ interface Props
 export const AdminFormResetButton = (props: Props) => {
   const { className, ...rest } = props;
   return (
-    <ButtonCustom
-      className={clsx(
-        "0 rounded-lg py-2",
-        "hover:!scale-[1.02]",
-        "h-full w-full",
-        "bg-red-400",
-        className,
-      )}
-      {...rest}
-    >
+    <AdminButton className={clsx("bg-red-400", className)} {...rest}>
       <p>Reset</p>
-    </ButtonCustom>
+    </AdminButton>
   );
 };

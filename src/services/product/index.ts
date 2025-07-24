@@ -10,4 +10,7 @@ export const productServices = {
     axiosClient.get(`${URL}/${productId}`),
   updateProduct: (productId: string, form: CreateProductDTO) =>
     axiosClient.put(`${URL}/${productId}`, form),
+  getAllProduct: () => axiosClient.get(URL),
+  deleteProduct: (productId: string) =>
+    axiosClient.delete(`${URL}/${productId}`),
 };

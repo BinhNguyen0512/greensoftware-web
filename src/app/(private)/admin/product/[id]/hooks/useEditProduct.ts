@@ -40,8 +40,6 @@ export const useEditProduct = () => {
   });
 
   useEffect(() => {
-    if (!productId) return;
-
     const handleGetProduct = async () => {
       try {
         const response = await productServices.getProductDetailById(productId);
@@ -57,7 +55,7 @@ export const useEditProduct = () => {
     };
 
     handleGetProduct();
-  }, [productId]);
+  }, []);
 
   const onSubmit = async (data: CreateProductDTO) => {
     try {
