@@ -5,6 +5,7 @@ import { ConvertPrice } from "@/helpers/convertPrice";
 import { Column } from "@/types/common";
 import { ProductType } from "@/types/product/response";
 
+import { AdminButton } from "./components/form/button/AdminButton";
 import { ProductFormLayout } from "./components/ui/ProductFormLayout";
 import { useProductList } from "./hooks/useProductList";
 
@@ -20,14 +21,29 @@ const productColumns: Column[] = [
 ];
 
 const ProductPage = () => {
-  const { isLoading, productList, handleDelete, handleEdit, isLoadingDelete } =
-    useProductList();
+  const {
+    isLoading,
+    productList,
+    handleDelete,
+    handleEdit,
+    handleAddProduct,
+    isLoadingDelete,
+  } = useProductList();
 
   return (
     <ProductFormLayout
       title="Danh sách sản phẩm"
       renderProductForm={
-        <>
+        <div className="flex flex-col gap-4">
+          <div className="w-40">
+            <AdminButton
+              className="bg-green-800 text-white"
+              onClick={handleAddProduct}
+            >
+              + Thêm sản phẩm
+            </AdminButton>
+          </div>
+
           {isLoading ? (
             <p>Dữ liệu đang tải...</p>
           ) : (
@@ -39,10 +55,11 @@ const ProductPage = () => {
               isLoadingDelete={isLoadingDelete}
             />
           )}
-          <p className="text-md mt-4 text-center">
+
+          <p className="text-md text-center">
             Danh sách sản phẩm trong hệ thống
           </p>
-        </>
+        </div>
       }
     />
   );

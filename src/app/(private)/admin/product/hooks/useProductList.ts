@@ -29,6 +29,10 @@ export const useProductList = () => {
     handleGetProduct();
   }, []);
 
+  const handleAddProduct = () => {
+    router.push(`/admin/product/create`);
+  };
+
   const handleEdit = (item: ProductType) => {
     router.push(`/admin/product/${item.id}`);
   };
@@ -50,5 +54,12 @@ export const useProductList = () => {
     }
   };
 
-  return { productList, isLoading, handleEdit, handleDelete, isLoadingDelete };
+  return {
+    productList,
+    isLoading,
+    isLoadingDelete,
+    handleEdit,
+    handleDelete,
+    handleAddProduct,
+  };
 };
